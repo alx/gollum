@@ -131,6 +131,7 @@ module Precious
       @path = wikip.path
 
       wiki = wikip.wiki
+      @allow_uploads = wiki.allow_uploads
       if page = wikip.page
         if wiki.live_preview && page.format.to_s.include?('markdown') && supported_useragent?(request.user_agent)
           live_preview_url = '/livepreview/index.html?page=' + encodeURIComponent(@name)
@@ -266,6 +267,7 @@ module Precious
       wikip = wiki_page(params[:splat].first.gsub('+', '-'))
       @name = wikip.name.to_url
       @path = wikip.path
+      @allow_uploads = wikip.wiki.allow_uploads
 
       page_dir = settings.wiki_options[:page_file_dir].to_s
       unless page_dir.empty?

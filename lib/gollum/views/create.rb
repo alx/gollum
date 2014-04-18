@@ -17,6 +17,10 @@ module Precious
         false
       end
 
+      def allow_uploads
+        @allow_uploads
+      end
+
       def format
         @format = (@page.format || false) if @format.nil? && @page
         @format.to_s.downcase
